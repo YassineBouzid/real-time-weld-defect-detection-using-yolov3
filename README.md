@@ -38,7 +38,7 @@ The detection part has to be installed on a pc contains GPUs and do these tasks:
 On my own laptop, I am using NVIDIA GE Force 840M.  I optimized GPU consumption and synchronize all these tasks using multi threading techniques, despite that I recorded only 1.5 FPS which is still slow (about 30cm/s).
 At the site I will use NVIDIA GTX 1080 Ti 11g or RTX 2080 Ti 11g then I will see what performance I will gain.
 
-#Requirements:
+# Requirements:
 
 1. Python 3.7.7
 2. 	Keras 2.2.4
@@ -55,9 +55,7 @@ At the site I will use NVIDIA GTX 1080 Ti 11g or RTX 2080 Ti 11g then I will see
 13. PyAutoGui 0.9.50
 14. Pyserial 3.4
 
-#
-
-The user manual of the app:
+# The user manual of the app:
 Double click on server exe after about 3 min of loading a window 
 will appear (fig: 1):
 1.	The port used for the first thread 
@@ -83,8 +81,7 @@ Once you fill up all fields, click on connect button to start listening from the
 
 ![fig2](https://user-images.githubusercontent.com/47951668/92667374-ac562680-f303-11ea-8a82-6fa23d301101.jpg)
 
-#
-On the detection PC:
+# On the detection PC:
 Double click on detection executable this window will appear (fig:3):
 1. The address of the server PC on the local network
 2. The port used for first thread
