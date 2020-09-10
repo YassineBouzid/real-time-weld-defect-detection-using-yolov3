@@ -1,6 +1,4 @@
 # Real-time-weld-defect-detection-using-yolov3
-this application is a customized app, it can detect weld defect in real time using pre-trained model yolov3 and according to the results it commands arduino uno to make the detection fully automatic
-#
 To prove the quality of products in pipeline industry, manufacturers have to perform an X-ray inspection in compliance to ISO API 5L. Every weld has to be inspected and the result has to be archived. 
 For that, Inspectors have to stay for more than seven hours scanning visually x-ray live video of the weld bead in production chain, this time-consuming task can bind a lot of manpower and cause a bottleneck in the production output. Moreover, it diminishes the efficiency of inspecting which works against the quality control duty.
 Machine leaning in general and deep learning in particular based on artificial intelligence will ease the task and improve the quality due to the machine utility.
