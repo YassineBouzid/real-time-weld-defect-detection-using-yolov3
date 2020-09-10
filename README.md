@@ -25,7 +25,7 @@ server part has to be installed on the main pc and do these tasks:
 2.	Command paint injectors to localize the defect on the pipe. 
 3.	Receive security conditions from optic sensors and secure the operation according to these conditions.
 #
-![arduino](https://user-images.githubusercontent.com/47951668/92666681-d3abf400-f301-11ea-839e-2d47d65b81ea.jpg)
+
 #
 The detection part has to be installed on a pc contains GPUs and do these tasks:
 - 	Receive the data from server and convert it to image
