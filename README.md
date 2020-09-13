@@ -1,17 +1,21 @@
-# Real-time-weld-defect-detection-using-yolov3
-To prove the quality of products in pipeline industry, manufacturers have to perform an X-ray inspection in compliance to ISO API 5L. Every weld has to be inspected and the result has to be archived. 
-For that, Inspectors have to stay for more than seven hours scanning visually x-ray live video of the weld bead in production chain, this time-consuming task can bind a lot of manpower and cause a bottleneck in the production output. Moreover, it diminishes the efficiency of inspecting which works against the quality control duty.
-Machine leaning in general and deep learning in particular based on artificial intelligence will ease the task and improve the quality due to the machine utility.
-In order to automate the task of radiographic inspection in real-time, I had to choose the best object detection model, at present, Yolov3 architecture has shown magnificent performance in real-time detection which made it the right algorithm for this project.
-In this work, I have manually prepared and labeled 1300 defect image and I download the yolov3 darknet weights, which has already been trained on MSCOCO dataset and recognize 80 different classes with (mean average precision) mAP measured at 0.5 IOU = 60.6 %  , also I prepared all necessary files to be ready for training on Google Colab seeking the free and  preferment GPUs, I started training yolov3 model from the pre-trained weights, and results are as follows:  
+# Real-time-weld-defect-detection-using-Yolov3 (you only look once):
+To prove the quality of products in pipeline manufacturing, manufacturers have to perform an X-ray inspection in compliance to ISO API 5L. Every weld has to be inspected and the result has to be archived. 
+For that, Inspectors have to stay for more than seven hours scanning visually x-ray live video of the weld bead, this time-consuming task can bind a lot of manpower and cause a bottleneck in the production output. Moreover, it diminishes the efficiency of inspecting which works against the quality control duty.
+
+Due to the machine utility,machine leaning in general and deep learning in particular based on artificial intelligence will ease the task and improve the control quality, so the automation of the task is right thing to solve this problem, and in order to automate radiographic-inspection task  in real-time, I had to choose the best object detection algorithm available. At present, Yolov3 architecture has shown magnificent performance in real-time detection which made it the right algorithm for this project.
+
+In this work, I have prepared a training dataset and manually labeled 1300 defect image. Also, I have download yolov3 darknet weights from its website https://pjreddie.com/darknet/yolo/, which has already been trained on MSCOCO dataset and recognize 80 different classes with mAP (mean average precision)  measured at 0.5 IOU = 60.6 %  , also I had prepared all necessary files to be ready for training on Google Colab seeking the free and  powerful GPUs, I started training yolov3 model from the pre-trained weights, and results are as follows:  
+#Results of training yolov3 on custom x-ray dataset:
 ![training table](https://user-images.githubusercontent.com/47951668/92666441-2cc75800-f301-11ea-832b-dbdb7b417cd6.jpg)
-#
-According to these results, yolov3 weights at 3500 epochs are the best weights. and whenever I decrease the IOU rate the mAP getting better. I decided to deploy these weights in my project.
-I used keras library and tensorflow in this project. So, I had to convert weights from darknet .weights to .h5 weights using this code  https://github.com/qqwweee/keras-yolo3/blob/master/convert.py 
-To customize the application I had to simulate the operator work and I end up with this concept:
-- a)	Grab the image from the x-ray detector software named “YXLON Image 3500”.
-- b)	Analyzing the image using that converted weights and get results. 
-- c)	Give orders according to these results.
+
+According to these results, yolov3 weights at 3500 epochs are the best weights. and whenever I decrease the IOU rate the mAP increase. I decided to deploy these weights in my project.
+I am using tensorflow and keras library. So, I had to convert weights from darknet format (.weights) to pyh5 format (.h5) to be suitable for deployment in keras, i did converted it with the use of  this code:  https://github.com/qqwweee/keras-yolo3/blob/master/convert.py
+
+To customize the application I had to simulate the operator work, and I end up with three main operations:
+        - a)	Grab the image from the x-ray detector software “YXLON Image 3500” (first, the operator look visually to the video).
+        - b)	Analyzing the frame image using that converted weights and get results. (the operator inspect the frame in his mind) 
+        - c)	Give orders according to these results. (the operator take a decision according to result, whether to stop the operation and mention the defect location on the tube or not)
+the mission of this application is to simulate exactly the operator work 
 #
 Detecting objects in real time requires powerful GPUs. Therefore, I decided to ascribe the detection task to a separated pc for that I had to split the application into two parts, Server and detection using two PCs connected over a Local network: 
 The server part has to be installed on the main pc and do these tasks:
