@@ -58,20 +58,20 @@ In this project I have used the following libraries and tools:
 15. pyinstaller 3.6
 for direct use, you can download the executable of both parts of the application and use them just by double click:
 - Server exe for windows 64 and 32 bit:
-- Detection part exe for windows 64 bit only:
+- Detection part exe for windows 64 bit only: gpu ... cpu ...
+-The yolov3 pre-trained model in h5 format:
 
 # The user manual of the app:
-Double click on server exe after about 3 min of loading a window 
-will appear (fig: 1):
-1.	The port used for the first thread 
-2.	The port used for the second thread
-3.	The arduino com port
+Once the exe files have been downloaded. on Server PC, double click on Server.exe, a window (fig: 1) will appear:
+1.	Port used for the first thread 
+2.	Port used for the second thread
+3.	The arduino COM port
 4.	Integration time (in seconds)
 5.	The pipe name (for each tube the operator should fill up this field)
 6.	The current number of integration (per tube)
 7.	Click this to start listening from the detection PC
-8.	Empty signal field to show the current stat of the app 
-9.	Click this to close the app
+8.	Empty signal field to show the current operation on the app 
+9.	Click on this button to close the app
 10.	Start the chariot manually 
 11.	Pause the chariot manually
 12.	Move the chariot back manually
@@ -86,23 +86,24 @@ Once you fill up all fields, click on connect button to start listening from the
 
 ![fig2](https://user-images.githubusercontent.com/47951668/92667374-ac562680-f303-11ea-8a82-6fa23d301101.jpg)
 
-# On the detection PC:
-Double click on detection executable this window will appear (fig:3):
-1. The address of the server PC on the local network
+# On the detection PC (second part of the application):
+Double click on detection executable a window (fig:3) will appear (loading tensorflow and model weights may take a while):
+1. The IP address of the server PC on the local network
 2. The port used for first thread
 3. The port used for second thread
 4. Defect dimension threshold (over it, the integration process will start)
 5. Set the number of defect threshold (over it, the integration process will start)
 6. Set the confidence threshold (under it, defects will not be considered as correct defect)
-7. Set the IOU rate (intersection over union) threshold  (threshold to choose anchor to predict boxes, it is inversely proportional with accuracy) 
+7. Set the IOU  (intersection over union) rate threshold. (threshold to choose the right anchor to predict boxes, it is inversely proportional with accuracy) 
 8. The admissible  inspection speed (on meter per second m/s) 
 9. Click to start data exchange with the server
 10. Click to quit and close the app
-To connect to the server, modify with the corresponding custom values then click on start button.
+
+Make sure ports and IP adresse are identical to server ones then click on start button to connect to the Server.  .
 
 ![fig3](https://user-images.githubusercontent.com/47951668/92667477-ef17fe80-f303-11ea-876d-d3d6239b229f.jpg)
 
-# On the server PC: 
+# On Server PC: 
 
 The digital x-ray detector software (YXLON image 3500) is an image editor show the current image(Fig:4), The application is configured to grab, convert and send the selected red 
 square (size=1000X1000 pixels) in real-time to the second part of the application in the detection PC to be analyzed using the pre-trained model YOLOV3.
@@ -229,9 +230,10 @@ These libraries and tools are required in case you want to run the python code:
 *These links are provided to download the binary executable for both server and detection partes so those libraries won't be required (except Cuda toolkit and Cudnn tools are indispensable in case you want to use GPUs). 
 - server exe :
 - detection exe:
+-The yolov3 pre-trained model in h5 format:
+
 # The user manual of the app:
-Double click on server exe after about 3 min of loading a window 
-will appear (fig: 1):
+once the exe files have been downloaded, on the server PC double click on server exe, a window (fig: 1) will appear (loading model may take a while) :
 1.	The port used for the first thread 
 2.	The port used for the second thread
 3.	The arduino com port
