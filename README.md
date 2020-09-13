@@ -105,46 +105,41 @@ Make sure ports and IP adresse are identical to server ones then click on start 
 
 # On Server PC: 
 
-The digital x-ray detector software (YXLON image 3500) is an image editor show the current image(Fig:4), The application is configured to grab, convert and send the selected red 
-square (size=1000X1000 pixels) in real-time to the second part of the application in the detection PC to be analyzed using the pre-trained model YOLOV3.
+Digital x-ray detector software (YXLON image 3500) is an image editor, it show the current x-ray image(Fig:4), The application is configured to grab, convert and send the selected red square area (1000X1000 pixels) in real-time to detection PC for analyzing it using the pre-trained model YOLOV3. 
 
 ![fig4](https://user-images.githubusercontent.com/47951668/92667480-f3441c00-f303-11ea-945e-fc72538a09f5.jpg)
 #
--	Once the detection PC is started,  the color of signal field in the server app turned green and indicate that the first thread is on  and the detection pc is connected 
+-	Once the detection PC is started,  the color of signal field in the server app turned green and indicate that the first thread is started and the detection pc is connected 
 (fig: 5).
 ![fig5](https://user-images.githubusercontent.com/47951668/92667537-1a9ae900-f304-11ea-9ce3-0a9b35e9f002.jpg)
 
 # On the detection PC:
-After getting connected, automatically a window will appear showing each defect inside a blue bounding box with name and confidence rate on the current 
-grabbed image after being analyzed by the pre-trained model (fig: 6)
+After getting connected, automatically a window will appear showing each defect inside a blue bounding box with name and confidence rate on the current grabbed image after being analyzed (fig: 6)
 
 ![fig6](https://user-images.githubusercontent.com/47951668/92667593-44541000-f304-11ea-9075-0aa6165210db.jpg)
 
-On the left side in figure 6, all information about defects are given and been updated each frame, speed limit=0.03 m/s which is really slow (3cm/s)
-due to the small FPS = 0.1 thus I used tensorflow-CPU to show the minimum computing power required to run this application.
+On the left side in figure 6, all information about defects are given and been updated each frame, speed limit=0.03 m/s which is really slow (3cm/s) due to the small FPS = 0.1 thus, here, I used tensorflow-CPU to show the minimum computing power required to run this application.
 
 # On the server PC:
 As it is shown there are 3 defects has been detected, so, an order has been sent to server to stop the chariot and start the integration process.
-The signal field Label and background have changed to indicate that integration process has been started, it will take the time set for integration to finish (fig: 7).
+The signal field Label and background have been changed, it indicates that integration process has been started (fig: 7):
 
 ![fig7](https://user-images.githubusercontent.com/47951668/92667667-706f9100-f304-11ea-82bf-1b5a7a85f1c9.jpg)
 
 After finishing image integration on YXLON software,if save checkbox is checked, the application is configured to save the image according to 1,2,3 in the fig: 7 respectively. 
-According to the given path (1) the app will create a folder named as pipe name (2)and inside that folder, the integrated image will be archived under the name of the pipe (2)
-concatenated with the corresponded number of integration (3) as follows:
+According to the given path (1) the app will create a folder named as PIPE NAME (2) and inside that folder, the integrated image will be archived under the name of the pipe (2) concatenated with the corresponded number of integration (3) as follows:
+
 ![noname](https://user-images.githubusercontent.com/47951668/92667686-7ebdad00-f304-11ea-884e-f644311f3c3e.jpg)
-also, if checkbox “print” is checked, the integrated image will be printed, finally, the server will start the chariot again and cycle will continue until the end of the tube.
-#
+
+also, if checkbox “print” is checked, the integrated image will be printed. finally, the server will start the chariot again to start another cycle and the loop will continue until the end of the tube.
 
 # Manual command and inspection:
-When the operator wants to detect defects visually, the server application can be used for manual mode inspection.
-- Click on START button to start the chariot movement, the button background will change to green and the label changed to CH_STARTED (01 in fig: 8).
-- Click on PAUSE button to stop the chariot instantly, the button background will change to orange and the label will be RESUME means if you want to 
-continue just click again (02 in fig: 8)
-- Click on BACK button to pull the chariot back, then the chariot will move backward and the button background color will change to red and the label will change to 
-STOP! Means if you want to stop just click again (03 in fig: 8)
-- Click on INTEGRATE button to integrate manually the current image, the button background color will change to yellow and after finishing integration it return white means
-integration has finished (04 in fig: 8)
+When the operator wants to detect defects visually, the server application can be used for manual inspection mode as follows:
+
+- Click on START button to start the chariot movement, the START button background will be changed to green and the label will be changed to CH_STARTED (01 in fig: 8).
+- Click on PAUSE button to stop the chariot instantly, the button background will change to orange and the label will be RESUME means if you want to continue just click again (02 in fig: 8)
+- Click on BACK button to pull the chariot back, the chariot will move backward and the button background color will change to red and the label will change to STOP! Means if you want to stop just click again (03 in fig: 8)
+- Click on INTEGRATE button to start integration process manually of the current image the x-ray software, the button background color will change to yellow and after finishing integration it return white indicting that integration has finished (04 in fig: 8)
 
 ![fig8](https://user-images.githubusercontent.com/47951668/92667727-a57be380-f304-11ea-8e0d-f87052d9c03a.jpg)
 
