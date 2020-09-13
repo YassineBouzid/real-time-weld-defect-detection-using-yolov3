@@ -12,33 +12,33 @@ According to these results, yolov3 weights at 3500 epochs are the best weights. 
 I am using tensorflow and keras library. So, I had to convert weights from darknet format (.weights) to pyh5 format (.h5) to be suitable for deployment in keras, i did converted it with the use of  this code:  https://github.com/qqwweee/keras-yolo3/blob/master/convert.py
 
 To customize the application I had to simulate the operator work, and I end up with three main operations:
-        - a)	Grab the image from the x-ray detector software “YXLON Image 3500” (first, the operator look visually to the video).
-        - b)	Analyzing the frame image using that converted weights and get results. (the operator inspect the frame in his mind) 
-        - c)	Give orders according to these results. (the operator take a decision according to result, whether to stop the operation and mention the defect location on the tube or not)
-the mission of this application is to simulate exactly the operator work 
-#
-Detecting objects in real time requires powerful GPUs. Therefore, I decided to ascribe the detection task to a separated pc for that I had to split the application into two parts, Server and detection using two PCs connected over a Local network: 
-The server part has to be installed on the main pc and do these tasks:
-server part has to be installed on the main pc and do these tasks:
-- •	 Grab the current image from the YXLON software (Image3500)
-- •	 Convert it to bytes than send it to detection PC
-- •	Receive orders from the detection PC when the current image contains defects.
-- •	Integrate, archive and print the current image if necessary. 
-- •	Commanding the microcontroller board (arduino uno) which has to: 
-1.	Control the chariot movement (stop, run and wait)
-2.	Command paint injectors to localize the defect on the pipe. 
+
+- a)	Grab the image from the x-ray detector software “YXLON Image 3500” (first, the operator look visually to the video).
+- b)	Analyzing the frame image using that converted weights and get results. (the operator inspect the frame in his mind) 
+- c)	Give orders according to these results. (the operator take a decision according to result, whether to stop the operation and mention the defect location on the tube or just continue when the defect is acceptable)
+
+The objective of this project is to build an application that can imitate exactly these operations. As It is well known that detecting objects in real time requires powerful GPUs. Therefore, I decided to ascribe the detection task to a separated PC. For that, I had to split the application into two parts: Server and detection, using two separated PCs connected over a Local network.
+
+The server part has to be installed on the main PC and do these tasks:
+- Grab the current image from the YXLON software (Image3500)
+- Convert that image to bytes and send it to the detection PC
+- Receive orders from the detection PC according the the detection results.
+- Integrate, archive and print the  image when necessary. 
+- Commanding the micro-controller board (arduino uno in this case) which has to do: 
+1.	The control of chariot's movement (stop, run and pause)
+2.	The command of paint injectors to localize the defect on the pipe. 
 3.	Receive security conditions from optic sensors and secure the operation according to these conditions.
 #
 
 #
-The detection part has to be installed on a pc contains GPUs and do these tasks:
-- 	Receive the data from server and convert it to image
-- 	Feed the yolo3 model with the received image and store the results.
-- 	Depending on these results, the app must send orders to server to do what is necessary.
-- 	Measuring the detection speed (the FPS) and depending on that, computing the inspection speed limit.
+The detection application part has to be installed on the detection PC which contains GPUs and do these tasks:
+- 	Receive data from Server and convert it to image
+- 	Feed the yolov3 model with the received image and store the results.
+- 	Depending on these results, choose the correct order and send it to Server.
+- 	Measuring the detection speed (the FPS rate) and depending on that, computing the inspection speed limit.
 #
-On my own laptop, I am using NVIDIA GE Force 840M.  I optimized GPU consumption and synchronize all these tasks using multi threading techniques, despite that I recorded only 1.5 FPS which is still slow (about 30cm/s).
-At the site I will use NVIDIA GTX 1080 Ti 11g or RTX 2080 Ti 11g then I will see what performance I will gain.
+On my laptops, I am using NVIDIA GE Force 840M.  I optimized GPU consumption and synchronize all these tasks using multi threading techniques, despite that I recorded only 1.5 FPS which is still slow (maximum 30cm/s).
+On the site, I will use NVIDIA GTX 1080 Ti 11g or RTX 2080 Ti 11g. So I will see what speed the application can reach.
 
 # Requirements:
 
@@ -205,25 +205,27 @@ The detection PC has to contain good GPUs and do the following tasks:
 - 	Measuring the detection speed (the FPS) and depending on that, computing the inspection speed limit.
 #
 On my own laptop, I am using NVIDIA GE Force 840M.  I optimized GPU consumption and synchronize all these tasks using multi threading techniques, despite that, I recorded only 1.5 FPS which is still slow (about 30cm/s).
-At the site I will use NVIDIA GTX 1080 Ti 11G or RTX 2080 Ti 11G then I will see what performance I will gain.
+At the site I will use NVIDIA GTX 1080 Ti 11G or RTX 2080 Ti 11G then I will see what performance the machine will reach.
 
 # Requirements:
-
+These libraries and tools are required in case you want to run the python code: 
 1. Python 3.7.7
-2. 	Keras 2.2.4
-3. 	H5py 2.10.0
+2. Keras 2.2.4
+3. H5py 2.10.0
 4. Tensorflow-gpu 1.13.1 & cpu(if there is no gpu) 
-5. 	Cuda toolkit (depending on the operation system)
-6. 	Cudnn (compatible to the OS and the Cuda version)
-7. 	Opencv 4.2.0.34
+5. Cuda toolkit (depending on the operation system)
+6. Cudnn (compatible to the OS and the Cuda version)
+7. Opencv 4.2.0.34
 8.  Easygui 0.98.1
-9. 	Pillow 7.1.1
+9. Pillow 7.1.1
 10. Numpy1.19.1
 11. Matplotlib 3.2.1
 12. Mss 6.0.0
 13. PyAutoGui 0.9.50
 14. Pyserial 3.4
-
+*These links are provided to download the binary executable for both server and detection partes so those libraries won't be required (except Cuda toolkit and Cudnn tools are indispensable in case you want to use GPUs). 
+- server exe :
+- detection exe:
 # The user manual of the app:
 Double click on server exe after about 3 min of loading a window 
 will appear (fig: 1):
