@@ -28,34 +28,37 @@ The server part has to be installed on the main PC and do these tasks:
 1.	The control of chariot's movement (stop, run and pause)
 2.	The command of paint injectors to localize the defect on the pipe. 
 3.	Receive security conditions from optic sensors and secure the operation according to these conditions.
-#
 
-#
 The detection application part has to be installed on the detection PC which contains GPUs and do these tasks:
 - 	Receive data from Server and convert it to image
 - 	Feed the yolov3 model with the received image and store the results.
 - 	Depending on these results, choose the correct order and send it to Server.
 - 	Measuring the detection speed (the FPS rate) and depending on that, computing the inspection speed limit.
-#
+
 On my laptops, I am using NVIDIA GE Force 840M.  I optimized GPU consumption and synchronize all these tasks using multi threading techniques, despite that I recorded only 1.5 FPS which is still slow (maximum 30cm/s).
 On the site, I will use NVIDIA GTX 1080 Ti 11g or RTX 2080 Ti 11g. So I will see what speed the application can reach.
 
-# Requirements:
 
+# Requirements:
+In this project I have used the following libraries and tools:
 1. Python 3.7.7
-2. 	Keras 2.2.4
-3. 	H5py 2.10.0
+2. Keras 2.2.4
+3. H5py 2.10.0
 4. Tensorflow-gpu 1.13.1 & cpu(if there is no gpu) 
-5. 	Cuda toolkit (depending on the operation system)
-6. 	Cudnn (compatible to the OS and the Cuda version)
-7. 	Opencv 4.2.0.34
-8.  Easygui 0.98.1
-9. 	Pillow 7.1.1
+5. Cuda toolkit (depending on the operation system)
+6. Cudnn (compatible to the OS and the Cuda version)
+7. Opencv 4.2.0.34
+8. Easygui 0.98.1
+9. Pillow 7.1.1
 10. Numpy1.19.1
 11. Matplotlib 3.2.1
 12. Mss 6.0.0
 13. PyAutoGui 0.9.50
 14. Pyserial 3.4
+15. pyinstaller 3.6
+for direct use, you can download the executable of both parts of the application and use them just by double click:
+- Server exe for windows 64 and 32 bit:
+- Detection part exe for windows 64 bit only:
 
 # The user manual of the app:
 Double click on server exe after about 3 min of loading a window 
