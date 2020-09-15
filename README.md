@@ -61,7 +61,7 @@ for direct use, you can download the executable of both parts of the application
 - Detection part exe for windows 64 bit only: gpu ... cpu ...
 - The yolov3 pre-trained model in h5 format:
 # Demonstrative video:
-This video will demonstrate how to use the application with a real test of it and the source code:
+This video shows a brief background with the source code and simulates the use of the application:
 
 # The user manual of the app:
 Once the exe files have been downloaded. on Server PC, double click on Server.exe, a window (fig: 1) will appear:
