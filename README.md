@@ -4,7 +4,7 @@ For that, Inspectors have to stay for more than seven hours scanning visually x-
 
 Due to the machine utility,machine leaning in general and deep learning in particular based on artificial intelligence will ease the task and improve the control quality, so the automation of the task is right thing to solve this problem, and in order to automate radiographic-inspection task  in real-time, I had to choose the best object detection algorithm available. At present, Yolov3 architecture has shown magnificent performance in real-time detection which made it the right algorithm for this project.
 
-In this work, I have prepared a training dataset and i have manually labeled 1300 defect image. Also, I have download yolov3 darknet weights from its website https://pjreddie.com/darknet/yolo/, which has already been trained on MSCOCO dataset and recognize 80 different classes with mAP (mean average precision)  measured at 0.5 IOU = 60.6 %  , also I had prepared all necessary files to be ready for training on Google Colab seeking the free and  powerful GPUs, I started training yolov3 model from the pre-trained weights, and results are as follows:  
+In this work, I have prepared a training dataset and i have manually labeled 1300 defect image. Also, I have download yolov3 darknet weights from its website https://pjreddie.com/darknet/yolo/, which has already been trained on MSCOCO dataset and recognize 80 different classes with mAP (mean average precision)  measured at 0.5 IOU = 60.6 %  , also I had prepared all necessary files to be ready for training on Google Colab seeking the free and  powerful GPUs, I started training yolov3 model from the pre-trained weights, and at each number of epochs i have calculated the mAP (mean Average Precision) according to this code https://github.com/Cartucho/mAP and finally i have gotten these results:  
 #Results of training yolov3 on custom x-ray dataset:
 ![training table](https://user-images.githubusercontent.com/47951668/92666441-2cc75800-f301-11ea-832b-dbdb7b417cd6.jpg)
 
@@ -59,7 +59,9 @@ In this project I have used the following libraries and tools:
 for direct use, you can download the executable of both parts of the application and use them just by double click:
 - Server exe for windows 64 and 32 bit:
 - Detection part exe for windows 64 bit only: gpu ... cpu ...
--The yolov3 pre-trained model in h5 format:
+- The yolov3 pre-trained model in h5 format:
+# Demonstrative video:
+This video will demonstrate how to use the application with a real test of it and the source code:
 
 # The user manual of the app:
 Once the exe files have been downloaded. on Server PC, double click on Server.exe, a window (fig: 1) will appear:
